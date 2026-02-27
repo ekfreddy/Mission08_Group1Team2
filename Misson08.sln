@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mission_08_models_db_setup", "mission_08_models_db_setup\mission_08_models_db_setup.csproj", "{CE58F096-E559-C4CF-CB6E-D045ED4CF965}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE58F096-E559-C4CF-CB6E-D045ED4CF965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE58F096-E559-C4CF-CB6E-D045ED4CF965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE58F096-E559-C4CF-CB6E-D045ED4CF965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE58F096-E559-C4CF-CB6E-D045ED4CF965}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8444E2F-CC97-40A6-A9AD-3E0859D0CCB8}
+	EndGlobalSection
+EndGlobal
