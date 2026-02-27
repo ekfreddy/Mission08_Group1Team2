@@ -1,0 +1,81 @@
+@model IEnumerable<mission_08_models_db_setup.Models.TaskItem>
+
+@{
+    ViewData["Title"] = "Quadrants";
+}
+
+<h2 class="mb-4">Task Quadrants</h2>
+
+<div class="row g-4">
+    @for (int q = 1; q <= 4; q++)
+    {
+        var quadrantLabel = q switch
+        {
+            1 => "Quadrant I: Important / Urgent",
+            2 => "Quadrant II: Important / Not Urgent",
+            3 => "Quadrant III: Not Important / Urgent",
+            4 => "Quadrant IV: Not Important / Not Urgent",
+            _ => ""
+        };
+
+        var headerColor = q switch
+        {
+            1 => "bg-danger",
+            2 => "bg-warning text-dark",
+            3 => "bg-info text-dark",
+            4 => "bg-secondary",
+            _ => ""
+        };
+
+        var tasksInQuadrant = Model.Where(t => t.Quadrant == q);
+
+        <div class="col-md-6">
+            <div class="card quadrant-card shadow-sm">
+                <div class="card-header @headerColor text-white">
+                    <h5 class="mb-0">@quadrantLabel</h5>
+                </div>
+                <div class="card-body">
+                    @if (!tasksInQuadrant.Any())
+                    {
+                        <p class="text-muted fst-italic">No tasks in this quadrant.</p>
+                    }
+                    else
+                    {
+                        @foreach (var task in tasksInQuadrant)
+                        {
+                            <div class="task-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <strong>@task.Task</strong>
+                                    @if (task.DueDate.HasValue)
+                                    {
+                                        <br /><small class="text-muted">Due: @task.DueDate.Value.ToString("MMM dd, yyyy")</small>
+                                    }
+                                    @if (task.Category != null)
+                                    {
+                                        <br /><span class="badge bg-light text-dark">@task.Category.Name</span>
+                                    }
+                                </div>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <a asp-action="AddEdit" asp-route-id="@task.TaskItemId" class="btn btn-outline-primary btn-sm">Edit</a>
+                                    <form asp-action="MarkComplete" asp-route-id="@task.TaskItemId" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-outline-success btn-sm">Done</button>
+                                    </form>
+                                    <form asp-action="Delete" asp-route-id="@task.TaskItemId" method="post" class="d-inline"
+                                          onsubmit="return confirm('Delete this task?');">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="text-center mt-4">
+    <a asp-action="AddEdit" class="btn btn-primary">Add New Task</a>
+</div>

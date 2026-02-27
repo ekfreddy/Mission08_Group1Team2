@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Task Manager</h1>
+    <p class="lead">Organize your tasks using the four quadrants from <em>The 7 Habits of Highly Effective People</em>.</p>
+    <hr />
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Add a Task</h5>
+                    <p class="card-text">Create a new task and assign it to a quadrant and category.</p>
+                    <a asp-action="AddEdit" class="btn btn-primary">Add Task</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">View Quadrants</h5>
+                    <p class="card-text">See all your tasks organized by quadrant priority.</p>
+                    <a asp-action="Quadrants" class="btn btn-outline-primary">View Quadrants</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
