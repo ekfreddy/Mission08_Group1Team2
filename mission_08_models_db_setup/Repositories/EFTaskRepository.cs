@@ -15,7 +15,10 @@ public class EFTaskRepository : ITaskRepository
 
     public IEnumerable<TaskItem> GetAllTasks()
     {
-        return _context.Tasks.Include(t => t.Category).ToList();
+        
+        return _context.Tasks
+            .Include(x => x.Category) 
+            .ToList();
     }
 
     public TaskItem? GetTaskById(int id)
@@ -26,11 +29,13 @@ public class EFTaskRepository : ITaskRepository
     public void AddTask(TaskItem task)
     {
         _context.Tasks.Add(task);
+        _context.SaveChanges(); 
     }
 
     public void UpdateTask(TaskItem task)
     {
-        _context.Tasks.Update(task);
+        _context.Update(task);
+        _context.SaveChanges(); 
     }
 
     public void DeleteTask(int id)

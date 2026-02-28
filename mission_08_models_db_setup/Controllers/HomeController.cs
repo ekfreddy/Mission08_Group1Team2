@@ -19,7 +19,13 @@ namespace mission_08_models_db_setup.Controllers
 
         public IActionResult Index()
         {
-            return View();
+           
+            var tasks = _taskRepo.GetAllTasks() 
+                .Where(x => x.Completed == false)
+                .ToList();
+
+            
+            return View(tasks); 
         }
 
         // GET: /Home/AddEdit  or  /Home/AddEdit/5
