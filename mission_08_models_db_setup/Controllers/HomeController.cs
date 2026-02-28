@@ -45,26 +45,27 @@ namespace mission_08_models_db_setup.Controllers
         }
 
         // POST: /Home/AddEdit
+        // POST: /Home/AddEdit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddEdit(TaskItem task)
+        public IActionResult AddEdit(TaskItem submission) // Renamed from 'task' to 'submission'
         {
             if (ModelState.IsValid)
             {
-                if (task.TaskItemId == 0)
+                if (submission.TaskItemId == 0)
                 {
-                    _taskRepo.AddTask(task);
+                    _taskRepo.AddTask(submission); 
                 }
                 else
                 {
-                    _taskRepo.UpdateTask(task);
+                    _taskRepo.UpdateTask(submission); 
                 }
                 _taskRepo.SaveChanges();
                 return RedirectToAction("Quadrants");
             }
 
             PopulateCategoryDropdown();
-            return View(task);
+            return View(submission); 
         }
 
         public IActionResult Quadrants()
