@@ -3,7 +3,7 @@ using mission_08_models_db_setup.Models;
 
 namespace mission_08_models_db_setup.Data;
 
-public class QuadrantsContext : DbContext
+public class QuadrantsContext: DbContext
 {
     public QuadrantsContext(DbContextOptions<QuadrantsContext> options) : base(options)
     {
